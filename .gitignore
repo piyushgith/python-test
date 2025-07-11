@@ -127,3 +127,20 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Pytype static type analyzer
+.pytype/
+
+# Cython debug symbols
+cython_debug
+
+# PyCharm
+.idea/
+# Rider
+.idea/
+# VS Code
+.vscode/
+# Visual Studio Code settings
+.vscode/*
+
+*.db
