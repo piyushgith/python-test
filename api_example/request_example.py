@@ -3,10 +3,14 @@ import json
 from datetime import date
 from datetime import timedelta
 import time
+import random
+
 # Assuming api_client.py is in the same directory
 
 base_url="http://127.0.0.1:8000/employees/"
 
+
+SEPARATOR = "=" * 65
 
 class EmployeeAPIClient:
 
@@ -29,15 +33,19 @@ class EmployeeAPIClient:
             try:
                 response = requests.post(base_url, json=employee_data)
                 response.raise_for_status() # Raise HTTPError for bad responses (4xx or 5xx)
-                print(f"Response for employee {i}: {response.status_code} - {response.text}")
-                responses.append(response)
                 print(f"Successfully created employee {i} with ID: {response.json().get('id')}")
+                print(SEPARATOR)
             except requests.exceptions.HTTPError as e:
+                # Handle HTTP errors
                 print(f"Failed to create employee {i} due to HTTP error: {e.response.status_code} - {e.response.text}")
                 responses.append(e.response) # Append the response that caused the error
+                print(SEPARATOR)
             except requests.exceptions.RequestException as e:
                 print(f"Failed to create employee {i} due to request error: {e}")
                 responses.append({'error': str(e)}) # Append a dictionary with error info
+                print(SEPARATOR)
+
+            #time.sleep(random.randint(1, 3))  # Sleep to avoid overwhelming the server                
 
         print(f"Finished creating {num_records} employee records.")
         return responses

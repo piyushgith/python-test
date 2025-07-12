@@ -1,12 +1,28 @@
+## `api_example`
+
+This project implements a FastAPI server for managing employee records with CRUD operations.
+
+- **Persistent Storage**: Uses SQLite for persistent storage, managed by `employee.py`.
+- **API Clients**: Includes synchronous (`request_example.py`) and asynchronous (`request_aio_example.py`) API clients for testing endpoints.
+- **Server Logic**: See `server.py` for API routes and logic.
+- **(Swagger UI)**:  `http://127.0.0.1:8000/docs`
+
 To run the FastAPI server, navigate to the directory containing your `server.py` file (or whatever you've named your FastAPI application file) in your terminal or command prompt.
 
 Then, execute the following command:
 
-```bash
-
-uvicorn server:app --reload
-
 ```
+python -m venv venv; venv/Scripts/activate.ps1; pip install -r requirements.txt;
+```
+
+**Explanation:**
+go to api_example folder
+
+```bash
+uvicorn server:app --reload
+```
+
+
 
 **Explanation:**
 

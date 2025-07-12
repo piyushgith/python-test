@@ -1,7 +1,6 @@
 import asyncio
 from random import random
 from time import perf_counter
-
 import aiohttp
 
 
