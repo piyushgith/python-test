@@ -46,7 +46,8 @@ class EmployeeAPIClient:
                 print(SEPARATOR)
 
             #time.sleep(random.randint(1, 3))  # Sleep to avoid overwhelming the server                
-
+            time.sleep(random.uniform(0.5, 2.0))  # Sleep for a random time between 0.5 and 2 seconds
+            
         print(f"Finished creating {num_records} employee records.")
         return responses
 
