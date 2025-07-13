@@ -1,0 +1,11 @@
+uvicorn 
+fastapi
+pandas
+numpy
+mcp
+fastapi-mcp
+asyncio
+aiohttp
+pydantic
+#pysqlite
+sqlalchemy
