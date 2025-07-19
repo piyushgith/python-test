@@ -2,7 +2,7 @@ from fastapi import FastAPI, HTTPException, Depends
 from pydantic import BaseModel
 from typing import List
 from sqlalchemy.orm import Session
-from .student import Student, get_db
+from student import Student, get_db
 
 
 # Pydantic Student model
@@ -18,9 +18,9 @@ class StudentRead(StudentCreate):
 
 app = FastAPI()
 
-@app.post("/students/", response_model=StudentRead)
+@app.post("/students", response_model=StudentRead)
 def create_student(student: StudentCreate, db: Session = Depends(get_db)):
-    db_student = Student(**student.dict())
+    db_student = Student(**student.model_dump())
     db.add(db_student)
     db.commit()
     db.refresh(db_student)
@@ -28,7 +28,7 @@ def create_student(student: StudentCreate, db: Session = Depends(get_db)):
 
 # /students/?skip=20&limit=50
 # Existing paginated endpoint
-@app.get("/students/", response_model=List[StudentRead])
+@app.get("/students", response_model=List[StudentRead])
 def read_students(skip: int = 0, limit: int = 10, db: Session = Depends(get_db)):
     students = db.query(Student).offset(skip).limit(limit).all()
     return students
