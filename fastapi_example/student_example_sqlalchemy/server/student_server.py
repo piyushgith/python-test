@@ -1,20 +1,15 @@
+import sys
+import os
+
+# Add the project root directory to Python path
+project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../..'))
+sys.path.append(project_root)
+
 from fastapi import FastAPI, HTTPException, Depends
-from pydantic import BaseModel
 from typing import List
 from sqlalchemy.orm import Session
 from student import Student, get_db
-
-
-# Pydantic Student model
-class StudentCreate(BaseModel):
-    name: str
-    age: int
-    email: str
-
-class StudentRead(StudentCreate):
-    id: int
-    class Config:
-        orm_mode = True
+from fastapi_example.student_example_sqlalchemy.model.student_req import StudentCreate, StudentRead
 
 app = FastAPI()
 
