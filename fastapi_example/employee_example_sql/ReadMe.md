@@ -20,6 +20,9 @@ go to api_example folder
 
 ```bash
 uvicorn server:app --reload
+
+uvicorn fastapi_example.student_example:app --reload
+
 ```
 
 
